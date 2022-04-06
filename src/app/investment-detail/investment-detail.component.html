@@ -1,0 +1,149 @@
+<div class="row justify-content-center"> <!-- Titulo y pequeña descripción de la oferta de inversión -->
+  <div class="col-md-12">
+    <h3>{{ investmentOffer.investmentName }}</h3>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-md-12">
+    <p>{{ investmentOffer.investmentDesc }}</p>
+  </div>
+</div>
+
+<!--<div class="row">
+
+  <div class="col-md-8">
+    <img [src]="investmentOffer.imageURL" class="img-top" alt="investment image">
+  </div>
+
+  <div class="col-md-4">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="w-100" style="height: 0.5rem; background-color: #ccc;"></div>
+        <div class="bg-themePrimary" id="financingIndicator" style="height: 0.5rem; position: relative; top: -0.5rem;"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p class="fs-4">{{ investmentOffer.currentFinancing }}<p>
+        <p>contribuido de {{ investmentOffer.financingTarget }}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn bg-themePrimary w-100 text-white py-2 hover-primary">Invertir en el proyecto</button>
+      </div>
+    </div>
+
+  </div>
+  
+</div>-->
+
+<div class="row mt-3"> <!-- Fila de la imagen e información del estado de la inversión -->
+  <div class="col-md-8">
+    <img [src]="investmentOffer.imageURL" class="img-top" alt="investment image">
+  </div>
+
+  <div class="col-md-4 d-flex flex-column justify-content-top">
+    <div class="row">
+      <div class="col-md-12" style="height: 2rem;">
+        <div class="w-100 h-100" style="background-color: #666; border-radius: 5px;"></div>
+        <div class="bg-themePrimary h-100" id="financingIndicator" style="position: relative; top: -2rem; border-radius: 5px 0px 0px 5px;"></div>
+        <div id="financingPercentage" class="h-100 text-white text-center" style="position: relative; top: -4rem; line-height: 2rem;">
+          <span style="display: inline-block; vertical-align: middle; text-shadow: #000 2px 2px 4px;"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-1">
+      <div class="col-6 fw-500">
+        <div class="text-start">S/ {{ investmentOffer.currentFinancing }}</div>
+        <div class="text-start">recaudados</div>
+      </div>
+      <div class="col-6 fw-500">
+        <div class="text-end">S/ {{ investmentOffer.financingTarget }}</div>
+        <div class="text-end">objetivo</div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="fw-500">Personas contribuyendo:</div>
+        <div class="fs-20 fw-400">{{ countListElements(investmentOffer.backers) }}</div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="fw-500">Fecha de creación:</div>
+        <div class="fs-20 fw-400">{{ formatDate(investmentOffer.created) }}</div>
+      </div>
+    </div>
+    
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="fw-500">Fecha límite:</div>
+        <div class="fs-20 fw-400">{{ formatDate(investmentOffer.endDate) }}</div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <button (click)="showInvestInProposalModal()" id="investButton1" class="btn bg-themePrimary w-100 text-white py-2 hover-primary">
+          Invertir en la propuesta
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-5 investment-info-nav position-sticky" style="top: 60px; background-color: white;"> <!-- nav de información extendida de la oferta de inversión -->
+  <div class="col">
+
+    <ul class="nav investment-info justify-content-start">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Información</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Evaluación</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Compromisos ambientales</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Acerca de la empresa</a> <!-- Abrir Modal -->
+      </li>
+      <li class="nav-item ms-auto">
+        <button (click)="showInvestInProposalModal()" id="investButton2" class="btn bg-themePrimary text-white py-2 hover-primary">
+          Invertir en la propuesta
+        </button>
+      </li>
+    </ul>
+
+  </div>
+
+</div>
+
+<div class="row mt-5 mb-4"> <!-- info extendida de la oferta de inversión -->
+
+  <div class="extended-info-container col-md-12">
+    <p style="white-space: pre-line;">
+      {{ investmentOffer.investmentHistory }}
+    </p>
+  </div>
+
+  <div class="extended-info-container col-md-12 d-none">
+    <p>
+      {{ investmentOffer.investmentRisks }}
+    </p>
+  </div>
+
+  <div class="extended-info-container col-md-12 d-none">
+    <p>
+      {{ investmentOffer.investmentEnvironmentalCommitments }}
+    </p>
+  </div>
+
+</div>

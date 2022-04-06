@@ -1,0 +1,10 @@
+.btn-themePrimary {
+    background-color: var(--color-themePrimary);
+    color: #fff;
+}
+.btn-themePrimary:hover {
+    background-color: var(--color-themePrimary-darker);
+}
+.error {
+    border-color: #e74c3c;
+}

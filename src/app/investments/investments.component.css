@@ -1,0 +1,3 @@
+.hover-darker:hover {
+    background-color: var(--color-themePrimary-darker);
+}

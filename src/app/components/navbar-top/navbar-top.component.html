@@ -1,0 +1,75 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light shadow-bottom" id="navBar">
+  <div class="container-xl">
+    <a class="navbar-brand" href="#">
+      <img src="..\assets\logo_icons\socios360_logo_version1_redimension.png" alt="socios360 logo" width="150">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul *ngIf="userJSON.accType == 1" class="navbar-nav ms-auto mb-lg-0 me-3">
+        <li class="nav-item pe-2">
+          <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['/main', 'home']">Inicio</a>
+        </li>
+        <li class="nav-item pe-2">
+          <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['/main', 'investments']">Inversiones</a>
+        </li>
+      </ul>
+      <form *ngIf="userJSON.accType == 1" class="d-flex pe-3">
+        <div class="input-group">
+          <input type="text" class="form-control buscador" placeholder="Buscar" aria-label="Recipient's username" aria-describedby="search-btn">
+          <button class="btn btn-secondary" type="button" id="search-btn">
+            <i class='bx bx-search'></i>
+          </button>
+        </div>
+      </form>
+      <ul class="navbar-nav" [class.ms-auto]="userJSON.accType == 2">
+        <li class="nav-item dropdown navbarLiDropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class='bx bxs-user user-icon'></i><span class="ms-2 position-relative displayName">{{ displayName }}</span><span *ngIf="userJSON.accType == 1" class="position-relative displayName px-2">S/. {{ userJSON.investor!.money }}</span>
+          </a>
+          <ul id="ayuda" class="dropdown-menu navbarDropdown-content" aria-labelledby="navbarDropdown">
+            <li>
+              <h5 class="dropdown-header">Tu cuenta</h5>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                <span><i class='bx bxs-user-detail'></i></span>
+                <span class="dropdown-option"> Mi Perfil</span>
+              </a>
+            </li>
+            <!--<li>
+              <a class="dropdown-item" href="#">
+                <span><i class='bx bxs-user-account'></i></span>
+                <span class="dropdown-option"> Mi cuenta</span>
+              </a>
+            </li>-->
+            <li *ngIf="userJSON.accType == 1">
+              <a class="dropdown-item cursor-pointer" (click)="showRechargeBalanceModal()">
+                <span><i class='bx bx-money-withdraw'></i></span>
+                <span class="dropdown-option"> Recargar saldo</span>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                <span><i class='bx bxs-cog'></i></span>
+                <span class="dropdown-option"> Configuración</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item cursor-pointer" (click)="logOut()">
+                <span><i class='bx bx-log-out'></i></span>
+                <span class="dropdown-option"> Cerrar sesión</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <!--<span class="navbar-text money-text">S/. {{ userJSON.investor!.money }}</span>-->
+    </div>
+  </div>
+</nav>

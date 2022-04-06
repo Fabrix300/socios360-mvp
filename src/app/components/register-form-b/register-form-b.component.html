@@ -1,0 +1,81 @@
+<div id="register-form-b">
+  <div class="fs-3 mt-1 text-left">Cuenta Empresa</div>
+  <app-alert [alertData]="alertData"></app-alert>
+  <form (ngSubmit)="onSubmit()">
+    <div class="mt-3 form-group">
+      <label for="names" class="form-label fs-15">Nombres del representante:</label>
+      <input (keydown)="allowOnlyText($event, representativeNames.id)" (keyup)="verifyField(0, representativeNames.id)" [(ngModel)]="registerForm.business!.representativeNames" #representativeNames id="representativeNames" class="form-control" name="representativeNames" type="text" aria-label="Nombres del representante">
+      <i class='bx bxs-check-circle'></i>
+      <i class='bx bxs-error-circle'></i>
+      <small class="message">Message</small>
+    </div>
+    <div class="mt-3 form-group">
+      <label for="surnames" class="form-label fs-15">Apellidos del representante:</label>
+      <input (keydown)="allowOnlyText($event, representativeSurnames.id)" (keyup)="verifyField(1, representativeSurnames.id)" [(ngModel)]="registerForm.business!.representativeSurnames" #representativeSurnames id="representativeSurnames" class="form-control" name="representativeSurnames" type="text" aria-label="Apellidos del representante">
+      <i class='bx bxs-check-circle'></i>
+      <i class='bx bxs-error-circle'></i>
+      <small class="message">Message</small>
+    </div>
+    <div class="mt-3 form-group">
+      <label for="phone" class="form-label fs-15">Teléfono de la empresa:</label>
+      <input (keyup)="verifyField(2, phone.id)" [(ngModel)]="registerForm.phone" #phone id="phone" class="form-control" name="phone" type="number" aria-label="Celular">
+      <i class='bx bxs-check-circle'></i>
+      <i class='bx bxs-error-circle'></i>
+      <small class="message">Message</small>
+    </div>
+    <div class="mt-3 form-group">
+      <label for="email" class="form-label fs-15">Correo electrónico del representante o empresa:</label>
+      <input (keyup)="verifyField(3, email.id)" [(ngModel)]="registerForm.email" #email id="email" class="form-control" name="email" type="email" aria-label="Correo electrónico">
+      <i class='bx bxs-check-circle'></i>
+      <i class='bx bxs-error-circle'></i>
+      <small class="message">Message</small>
+    </div>
+    <div class="mt-3 form-group">
+      <label for="password" class="form-label fs-15">Contraseña:</label>
+      <div class="input-group">
+        <input (keydown.space)="$event.preventDefault();" (keyup)="verifyField(4, password.id)" [(ngModel)]="registerForm.password" #password id="password" class="form-control" name="password" type="password" aria-label="Contraseña">
+        <button class="btn btn-visibility" type="button" (click)="showPassword()" id="visibility-button">
+          <img src="../assets/img/visibility.png" alt="eye" width="23" height="23" id="visibility" class="d-inline">
+          <img src="../assets/img/non-visibility.png" alt="eye" width="23" height="23" class="d-none"
+            id="non-visibility">
+        </button>
+      </div>
+      <i class='bx bxs-check-circle'></i>
+      <i class='bx bxs-error-circle'></i>
+      <small class="message">Message</small>
+    </div>
+    <div class="mt-3 form-group">
+      <label for="businessName" class="form-label fs-15">Razón social de la empresa:</label>
+      <input (keydown)="notAloneSpaces($event, businessName.id)" (keyup)="verifyField(5, businessName.id)" [(ngModel)]="registerForm.business!.businessName" #businessName id="businessName" class="form-control" name="businessName" type="text" aria-label="Razón social de la empresa">
+      <i class='bx bxs-check-circle'></i>
+      <i class='bx bxs-error-circle'></i>
+      <small class="message">Message</small>
+    </div>
+    <div class="mt-3 form-group">
+      <label for="dob" class="form-label fs-15">Nombre comercial de la empresa:</label>
+      <input (keydown)="notAloneSpaces($event, businessTradeName.id)" (keyup)="verifyField(6, businessTradeName.id)" [(ngModel)]="registerForm.business!.businessTradeName" #businessTradeName id="businessTradeName" class="form-control" name="businessTradeName" type="text" aria-label="Nombre comercial de la empresa">
+      <i class='bx bxs-check-circle'></i>
+      <i class='bx bxs-error-circle'></i>
+      <small class="message">Message</small>
+    </div>
+    <div class="mt-3 form-group">
+      <label for="businessRuc" class="form-label fs-15">RUC de la empresa:</label>
+      <input (keyup)="verifyField(7, businessRuc.id)" [(ngModel)]="registerForm.business!.businessRuc" #businessRuc id="businessRuc" class="form-control" name="businessRuc" type="number" aria-label="RUC de la empresa">
+      <i class='bx bxs-check-circle'></i>
+      <i class='bx bxs-error-circle'></i>
+      <small class="message">Message</small>  
+    </div>
+    <div class="w-100 d-flex flex-row mt-4 mb-5">
+      <div class="w-50 me-1">
+        <div class="d-grid">
+          <button type="button" class="btn btn-secondary text-white p-2" (click)="goBackToLogin()">Atrás</button>
+        </div>
+      </div>
+      <div class="w-50 ms-1">
+        <div class="d-grid">
+          <button type="submit" class="btn bg-themePrimary text-white p-2">Crear cuenta</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

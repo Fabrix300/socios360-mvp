@@ -1,0 +1,23 @@
+.aditional-info-square {
+    border-radius: 5px;
+    background-color: #eee;
+}
+.btn-themePrimary {
+    background-color: var(--color-themePrimary);
+    color: #fff;
+}
+.btn-themePrimary:hover {
+    background-color: var(--color-themePrimary-darker);
+}
+/*FORM VERIFICATION STYLES*/
+.form-validation small{
+    display: none;
+}
+.form-validation.error input {
+    border-color: #e74c3c;
+}
+.form-validation.error small {
+    color: #e74c3c;
+    display: block;
+}
+/*  ********************* */

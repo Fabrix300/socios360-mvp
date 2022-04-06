@@ -1,0 +1,20 @@
+<div class="shadow card w-100 h-100">
+  <a (click)="goToInvestmentDetail(investmentObj!.id)" class=" cursor-pointer">
+    <img [src]="investmentObj!.imageURL" class="card-img-top" alt="investment image">
+  </a>
+  <div class="card-body">
+    <a (click)="goToInvestmentDetail(investmentObj!.id)" class="no-decorations text-black hover-underline cursor-pointer"><h5 class="card-title">{{ investmentObj!.investmentName }}</h5></a>
+    <p class="card-text">
+      {{ investmentObj!.investmentDesc }}
+    </p>
+    <a (click)="goToInvestmentDetail(investmentObj!.id)" class="btn text-white bg-themePrimary hover-darker">Ver oportunidad</a>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li *ngIf="investmentObj!.userOwner.business" class="list-group-item fs-0_9rem">
+      Por <a class="no-decorations text-black hover-underline cursor-pointer">{{ investmentObj!.userOwner.business.businessTradeName }}</a>
+    </li>
+  </ul>
+  <div class="card-footer">
+    <small class="text-muted">Última actualización: {{ investmentObj!.updated }}</small>
+  </div>
+</div>

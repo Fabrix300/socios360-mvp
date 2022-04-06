@@ -1,0 +1,13 @@
+<div *ngIf="toastObject" class="toast-element position-absolute bottom-0 end-0 shadow-sm">
+  <div class="toast-header">
+    <svg width="20" height="20" class="indicator" id="indicatorColor">
+      <rect width="100%" height="100%" [attr.fill]="toastObject.indicatorColor"></rect>
+    </svg>
+    <strong id="headerText" class="ms-1 me-auto">{{ toastObject.headerText }}</strong>
+    <small>11 mins ago</small>
+    <button type="button" id="btn-close" class="btn-close" aria-label="Close"></button>
+  </div>
+  <div id="bodyText" class="toast-body">
+    {{ toastObject.bodyText }}
+  </div>
+</div>

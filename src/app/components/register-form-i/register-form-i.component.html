@@ -1,0 +1,90 @@
+<div id="register-form-i">
+  <div class="fs-3 mt-1 text-left">Cuenta Inversionista</div>
+  <app-alert [alertData]="alertData"></app-alert>
+  <form (ngSubmit)="onSubmit()">
+    <div class="mt-3 form-group">
+      <label for="names" class="form-label fs-15">Nombres:</label>
+      <input (keydown)="allowOnlyText($event, names.id)" (keyup)="verifyField(0, names.id)" [(ngModel)]="registerForm.investor!.names" #names id="names" class="form-control" name="names" type="text" aria-label="Nombres">
+      <i class='bx bxs-check-circle'></i>
+      <i class='bx bxs-error-circle'></i>
+      <small class="message">Message</small>
+    </div>
+    <div class="mt-3 form-group">
+      <label for="surnames" class="form-label fs-15">Apellidos:</label>
+      <input (keydown)="allowOnlyText($event, surnames.id)" (keyup)="verifyField(1, surnames.id)" [(ngModel)]="registerForm.investor!.surnames" #surnames id="surnames" class="form-control" name="surnames" type="text" aria-label="Apellidos">
+      <i class='bx bxs-check-circle'></i>
+      <i class='bx bxs-error-circle'></i>
+      <small class="message">Message</small>
+    </div>
+    <div class="mt-3 form-group">
+      <label for="phone" class="form-label fs-15">Número de teléfono:</label>
+      <input (keyup)="verifyField(2, phone.id)" [(ngModel)]="registerForm.phone" #phone id="phone" class="form-control" name="phone" type="number" aria-label="Número de teléfono">
+      <i class='bx bxs-check-circle'></i>
+      <i class='bx bxs-error-circle'></i>
+      <small class="message">Message</small>
+    </div>
+    <div class="mt-3 form-group">
+      <label for="email" class="form-label fs-15">Correo electrónico:</label>
+      <input (keyup)="verifyField(3, email.id)" [(ngModel)]="registerForm.email" #email id="email" class="form-control" name="email" type="email" aria-label="Correo electrónico">
+      <i class='bx bxs-check-circle'></i>
+      <i class='bx bxs-error-circle'></i>
+      <small class="message">Message</small>
+    </div>
+    <div class="mt-3 form-group">
+      <label for="password" class="form-label fs-15">Contraseña:</label>
+      <div class="input-group">
+        <input (keydown.space)="$event.preventDefault();" (keyup)="verifyField(4, password.id)" [(ngModel)]="registerForm.password" #password id="password" class="form-control" name="password" type="password" aria-label="Contraseña">
+        <button class="btn btn-visibility" type="button" (click)="showPassword()" id="visibility-button">
+          <img src="../assets/img/visibility.png" alt="eye" width="23" height="23" id="visibility"
+                  class="d-inline" />
+          <img src="../assets/img/non-visibility.png" alt="eye" width="23" height="23" class="d-none"
+                  id="non-visibility"/>
+        </button>
+      </div>
+      <i class='bx bxs-check-circle'></i>
+      <i class='bx bxs-error-circle'></i>
+      <small class="message">Message</small>
+    </div>
+    <div class="mt-3 form-group">
+      <label for="dob" class="form-label fs-15">Fecha de nacimiento:</label>
+      <input (keyup)="verifyField(5, dob.id)" (change)="verifyField(5, dob.id)" [(ngModel)]="registerForm.investor!.dob" #dob id="dob" class="form-control" name="dob" type="date" aria-label="Fecha de nacimiento">
+      <i class='bx bxs-check-circle'></i>
+      <i class='bx bxs-error-circle'></i>
+      <small class="message">Message</small>
+    </div>
+    <div class="mt-3 form-group">
+      <label for="docType" class="form-label fs-15">Tipo de documento:</label>
+      <select [(ngModel)]="registerForm.investor!.docType" #docType id="docType" name="docType" class="form-select" aria-label="Tipo de documento">
+        <option value="DNI">DNI</option>
+        <option value="Pasaporte">Pasaporte</option>
+        <option value="Carnet de Extranjería">Carnet de Extranjería</option>
+      </select>
+    </div>
+    <div *ngIf="docType.value == 'DNI'" class="mt-3 form-group">
+      <label for="docNumber" class="form-label fs-15">Número de documento:</label>
+      <input (keyup)="verifyField(6, docNumber.id)" [(ngModel)]="registerForm.investor!.docNumber" #docNumber id="docNumber" class="form-control" name="docNumber" type="number" aria-label="Número de documento">
+      <i class='bx bxs-check-circle'></i>
+      <i class='bx bxs-error-circle'></i>
+      <small class="message">Message</small>
+    </div>
+    <div *ngIf="docType.value != 'DNI'" class="mt-3 form-group">
+      <label for="docNumber" class="form-label fs-15">Número de documento:</label>
+      <input (keydown)="allowTextAndNumbers($event, surnames.id)" (keyup)="verifyField(6, docNumber.id)" [(ngModel)]="registerForm.investor!.docNumber" #docNumber id="docNumber" class="form-control" name="docNumber" type="text" aria-label="Número de documento">
+      <i class='bx bxs-check-circle'></i>
+      <i class='bx bxs-error-circle'></i>
+      <small class="message">Message</small>
+    </div>
+    <div class="w-100 d-flex flex-row mt-4 mb-5">
+      <div class="w-50 me-1">
+        <div class="d-grid">
+          <button type="button" class="btn btn-secondary text-white p-2" (click)="goBackToLogin()">Atrás</button>
+        </div>
+      </div>
+      <div class="w-50 ms-1">
+        <div class="d-grid">
+          <button type="submit" class="btn bg-themePrimary text-white p-2">Crear cuenta</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

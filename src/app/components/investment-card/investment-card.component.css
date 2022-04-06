@@ -1,0 +1,9 @@
+.hover-darker:hover {
+    background-color: var(--color-themePrimary-darker);
+}
+.hover-underline:hover {
+    text-decoration: underline;
+}
+.fs-0_9rem {
+    font-size: 0.9rem;
+}

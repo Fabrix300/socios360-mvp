@@ -1,0 +1,113 @@
+<div class="modal fade" id="rechargeBalanceModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="rechargeBalanceTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="rechargeBalanceTitle">Recarga tu saldo</h5>
+        <button (click)="resetRechargeBalanceModal()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="position-relative m-4">
+          <div class="progress" style="height: 1px;">
+            <div id="rechargeBalanceProgressBar" class="progress-bar w-0 bg-themePrimary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-themePrimary rounded-pill step" style="width: 2rem; height:2rem;">1</button>
+          <button type="button" class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-secondary rounded-pill step" style="width: 2rem; height:2rem;">2</button>
+          <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill step" style="width: 2rem; height:2rem;">3</button>
+        </div>
+        <div *ngIf="loggedUser.investor" class="container-fluid pt-3">
+          <div *ngIf="step == 1" class="step1">
+            <div class="row">
+              <div class="col-12">
+                <h5>Datos de la recarga</h5>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-6">
+                <span class="fw-500">Tu saldo actual: &nbsp;</span>
+              </div>
+              <div class="col-6">
+                <span>S/. {{ loggedUser.investor.money }}</span>
+              </div>
+            </div>
+            <div class="row mt-3 d-flex flex-row align-items-center">
+              <div class="col-6">
+                <span class="fw-500">Monto a recargar:</span>
+              </div>
+              <div class="col-6">
+                <div class="input-group">
+                  <span class="input-group-text" id="currencyIndicator">S/.</span>
+                  <input type="number" name="rechargeAmount" id="rechargeAmount" class="form-control" [(ngModel)]="balanceRecharge.amount" aria-describedby="currencyIndicator">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="step == 2" class="step2">
+            <div class="row">
+              <div class="col-12">
+                <h5>Datos de pago</h5>
+              </div>
+            </div>
+            <div class="row mt-1">
+              <div class="col-12">
+                <hr>
+                <span class="fw-500">Monto a recargar: &nbsp;<span>S/. {{ balanceRecharge.amount }}</span></span>
+                <hr>
+              </div>
+            </div>
+            <div class="row mt-1">
+              <div class="col-12">
+                <label for="cardHolderName" class="form-label">Nombre del titular de la tarjeta:</label>
+                <input type="text" class="form-control" id="cardHolderName" placeholder="Nombre completo">
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-12">
+                <div class="d-flex">
+                  <label for="cardNumber" class="form-label">Número de tarjeta:</label>
+                  <span class="ms-auto">
+                    <img src="../assets/img/credit-cards/Visa-icon.png" width="20" alt="visa">
+                    <img class="ms-1" src="../assets\img/credit-cards/Master-Card-icon.png" width="20" alt="master card">
+                    <img class="ms-1" src="../assets\img/credit-cards/Diners-Club-International-icon.png" width="20" alt="diners club">
+                    <img class="ms-1" src="../assets\img/credit-cards/American-Express-icon.png" width="20" alt="american express">
+                  </span>
+                </div>
+                <input type="number" inputmode="numeric" class="form-control" id="cardNumber" placeholder="xxxx xxxx xxxx xxxx">
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-sm-6">
+                <label for="cardNumber" class="form-label">Fecha de expiración:</label>
+                <input type="number" inputmode="numeric" class="form-control" id="cardNumber" placeholder="MM / AA">
+              </div>
+              <div class="col-sm-6">
+                <label for="cardNumber" class="form-label">Código de seguridad:</label>
+                <input type="number" inputmode="numeric" class="form-control" id="cardNumber" placeholder="CVC">
+              </div>
+            </div>
+          </div>
+          <div *ngIf="step == 3" class="step3">
+            <div class="row">
+              <div class="col-12">
+                <h5>Pago exitoso!</h5>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-6">
+                <span class="fw-500">Nuevo saldo actual: &nbsp;</span>
+              </div>
+              <div class="col-6">
+                <span>S/. {{ loggedUser.investor.money }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button *ngIf="step == 1 || step == 3" (click)="resetRechargeBalanceModal()" type="button" id="btn-close-back" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button *ngIf="step == 2" (click)="goBack()" type="button" id="btn-close-back" class="btn btn-secondary">Atrás</button>
+        <button *ngIf="step == 1" (click)="advance()" type="button" id="btn-next-finish" class="btn btn-themePrimary">Siguiente</button>
+        <button *ngIf="step == 2" (click)="advance()" type="button" id="btn-next-finish" class="btn btn-themePrimary">Pagar</button>
+      </div>
+    </div>
+  </div>
+</div>

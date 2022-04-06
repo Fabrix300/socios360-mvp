@@ -1,0 +1,21 @@
+<!--<navbar-home></navbar-home>-->
+<navbar-top (navBarHeight)="setContentTopMargin($event)"></navbar-top>
+<div id="content">
+
+  <!-- Button trigger modal -->
+  <button id="btn-showBalanceRechargeModal" type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#rechargeBalanceModal">
+    Launch demo modal
+  </button>
+
+  <!-- Button trigger modal -->
+  <button id="btn-showInvestInProposalModal" type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#investInProposalModal">
+    Launch static backdrop modal
+  </button>
+
+  <div class="container-xl">
+    <router-outlet></router-outlet>
+    <app-recharge-balance></app-recharge-balance> <!-- Modal Recharge Balance -->
+    <app-invest-in-proposal></app-invest-in-proposal><!-- Modal -->
+  </div>
+</div>
+

@@ -1,0 +1,43 @@
+.bg-themePrimary:hover {
+    background-color: var(--color-themePrimary-darker);
+}
+.btn-visibility {
+    background-color: #e9ecef; 
+    border: 1px solid #ced4da;
+}
+.btn-visibility:hover {
+    background-color: #ddd;
+}
+/*FORM VERIFICATION STYLES*/
+.form-group {
+    position: relative;
+}
+.form-group i {
+    position: absolute;
+    font-size: 1.5rem;
+    top: 41px;
+    right: -25px;
+    display: none;
+}
+.form-group small {
+    display: none;
+}
+.form-group.success input {
+    border-color: #2ecc71;
+}
+.form-group.error input {
+    border-color: #e74c3c;
+}
+.form-group.success .bxs-check-circle {
+    color: #2ecc71;
+    display: block;
+}
+.form-group.error .bxs-error-circle {
+    color: #e74c3c;
+    display: block;
+}
+.form-group.error small {
+    color: #e74c3c;
+    display: block;
+}
+/*******/

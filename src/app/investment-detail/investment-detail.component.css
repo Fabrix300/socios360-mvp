@@ -1,0 +1,28 @@
+.img-top {
+    width: 100%;
+}
+.hover-primary:hover {
+    background-color: var(--color-themePrimary-darker);
+}
+.investment-info-nav {
+    border-bottom: 1px solid rgba(15, 14, 63, 0.3);
+    /*border-top: 1px solid rgba(15, 14, 63, 0.3);*/
+}
+.investment-info .nav-item {
+    padding-inline: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+}
+.investment-info .nav-item .nav-link {
+    color: rgba(0, 0, 0, .55);
+}
+.investment-info .nav-item .nav-link:hover {
+    color: rgba(0, 0, 0, .75);
+}
+.investment-info .nav-item.active {
+    border-bottom: 3px solid rgba(15, 14, 63, 0.9);
+}
+.investment-info .nav-item.active .nav-link {
+    color: rgba(15, 14, 63, 0.9);
+    font-weight: 500;
+}

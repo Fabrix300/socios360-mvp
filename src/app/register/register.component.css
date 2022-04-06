@@ -1,0 +1,43 @@
+.bg-purple:hover {
+    background-color: rgb(92, 51, 215);
+}
+.col-izq{
+    flex: 50;
+}
+.col-der{
+    flex: 50;
+}
+.register-div{
+    width: 60%;
+}
+
+/*RESPONSIVE*/
+@media only screen and (max-width: 992px) {
+    .register-div{
+        width: 70%;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .register-div{
+        width: 75%;
+    }
+}
+@media only screen and (max-width: 678px) {
+    .col-izq{
+        flex: 0;
+    }
+    .col-der{
+        flex: 100;
+    }
+    div .img-left {
+        padding: 0 !important;
+    }
+    .register-div{
+        width: 65%;
+    }
+}
+@media only screen and (max-width: 576px) {
+    .register-div{
+        width: 80%;
+    }
+}
