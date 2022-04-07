@@ -1,2 +1,1 @@
-invest-in-proposal
-    calculateExpectedInput()
+trabajar la función de validación y q se guarde el objeto investmentoperation

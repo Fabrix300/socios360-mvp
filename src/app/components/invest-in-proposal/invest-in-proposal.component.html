@@ -10,70 +10,84 @@
       <div class="modal-body">
         <button id="getInvestmentFunctionButton" class="d-none" type="button" (click)="getInvestmentByRouteId()"></button>
         <div *ngIf="investmentOffer.userOwner" class="container-fluid">
-          <!-- Empresa pagadora -->
-          <div class="row">
-            <div class="col-12">
-              <span class="fw-500">Empresa pagadora:</span>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <span *ngIf="investmentOffer.userOwner.business">{{ investmentOffer.userOwner.business.businessName }}</span>
-            </div>
-          </div>
-          <!-- Cuanto quiero invertir -->
-          <div class="row mt-3 d-flex flex-row align-items-center">
-            <div class="col-12">
-              <span class="fw-500">Monto a invertir: {{ investmentOperation.investedAmount }}</span>
-            </div>
-          </div>
-          <div class="row mt-1">
-            <div class="col-12 form-validation">
-              <div class="input-group">
-                <span class="input-group-text" id="currencyIndicator">S/.</span>
-                <input (keyup)="calculateExpectedInput()" type="number" name="investedAmount" id="investedAmount" class="form-control" [(ngModel)]="investmentOperation.investedAmount" aria-describedby="currencyIndicator">
+          <div *ngIf="step == 1" class="step1">
+            <!-- Empresa pagadora -->
+            <div class="row">
+              <div class="col-12">
+                <span class="fw-500">Empresa pagadora:</span>
               </div>
-              <small>Saldo insuficiente</small>
             </div>
-          </div>
-          <!-- retorno esperado -->
-          <div class="row mt-3">
-            <div class="col-6">
-              <span class="fw-500">Ganancia esperada:</span>
+            <div class="row">
+              <div class="col-12">
+                <span *ngIf="investmentOffer.userOwner.business">{{ investmentOffer.userOwner.business.businessName }}</span>
+              </div>
             </div>
-            <div class="col-6">
-              <span class="text-themePrimary">+ S/. {{ investmentOperation.expectedProfit }}</span>
+            <!-- Cuanto quiero invertir -->
+            <div class="row mt-3 d-flex flex-row align-items-center">
+              <div class="col-12">
+                <span class="fw-500">Monto a invertir:</span>
+              </div>
             </div>
-          </div>
-          <!-- Info extra (por ej. la tasa anualizada o tipo de inversión) -->
-          <div class="row mt-4">
-            <div class="col-12">
-              <span class="fw-500">Información adicional:</span>
+            <div class="row mt-1">
+              <div class="col-12 form-validation">
+                <div class="input-group">
+                  <span class="input-group-text" id="currencyIndicator">S/.</span>
+                  <input (keyup)="calculateExpectedInputAndValidate()" type="number" name="investedAmount" id="investedAmount"
+                    class="form-control" [(ngModel)]="investmentOperation.investedAmount" aria-describedby="currencyIndicator">
+                </div>
+                <small></small>
+              </div>
             </div>
-          </div>
-          <div class="row mt-2">
-            <div class="col-6">
-              <div class="aditional-info-square">
-                <div class="text-center">
-                  <div class="fw-500">Tasa anual</div>
-                  <div>{{ (investmentOffer.annualizedRate * 100).toFixed(2) }}%</div>
+            <!-- retorno esperado -->
+            <div class="row mt-3">
+              <div class="col-6">
+                <span class="fw-500">Ganancia esperada:</span>
+              </div>
+              <div class="col-6 text-end">
+                <span class="text-themePrimary">+ S/. {{ investmentOperation.expectedProfit }}</span>
+              </div>
+            </div>
+            <!-- Info extra (por ej. la tasa anualizada o tipo de inversión) -->
+            <div class="row mt-4">
+              <div class="col-12">
+                <span class="fw-500">Información adicional:</span>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-4">
+                <div class="aditional-info-square">
+                  <div class="text-center">
+                    <div class="fw-500">Tasa anual</div>
+                    <div>{{ (investmentOffer.annualizedRate * 100).toFixed(2) }}%</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="aditional-info-square">
+                  <div class="text-center">
+                    <div class="fw-500">Tasa mensual</div>
+                    <div>{{ (monthlyRate * 100).toFixed(4) }}%</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="aditional-info-square">
+                  <div class="text-center">
+                    <div class="fw-500">Tipo de inversión</div>
+                    <div>{{ investmentOffer.investmentType.name }}</div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="col-6">
-              <div class="aditional-info-square">
-                <div class="text-center">
-                  <div class="fw-500">Tipo de inversión</div>
-                  <div>{{ investmentOffer.investmentType.name }}</div>
-                </div>
-              </div>
-            </div>
+          </div>
+          <div *ngIf="step == 2" class="step2">
+            Inversión realizada con éxito!
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-themePrimary position-relative">Invertir <span class="position-relative" style="top: 0.15rem;"><i class='bx bxs-chevrons-right'></i></span></button>
+        <button *ngIf="step == 1" (click)="step = step + 1" type="button" class="btn btn-themePrimary position-relative">Invertir <span class="position-relative" style="top: 0.15rem;"><i class='bx bxs-chevrons-right'></i></span></button>
       </div>
     </div>
   </div>

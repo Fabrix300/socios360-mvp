@@ -6,15 +6,19 @@ import { InvestmentOffer } from "../data/interfaces/investmentOffer";
 import { User } from "../data/interfaces/user";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class InvestmentDetailService {
+  constructor() {}
 
-    constructor() {}
+  getInvestmentById(id: number): Observable<InvestmentOffer | undefined> {
+    const investmentOffer = INVESTMENTOFFERS.find((h) => h.id === id);
+    return of(investmentOffer);
+  }
 
-    getInvestmentById(id: number): Observable<InvestmentOffer | undefined> {
-        const investmentOffer = INVESTMENTOFFERS.find(h => h.id === id);
-        return of(investmentOffer);
-    }
-
+  getUser(userId: number): Observable<User> {
+    const user = USERS.find((h) => h.id === userId)!;
+    return of(user);
+  }
+  
 }
