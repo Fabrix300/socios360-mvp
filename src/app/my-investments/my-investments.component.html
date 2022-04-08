@@ -1,0 +1,27 @@
+<div class="row mb-3">
+  <div class="col">
+    <h3>Mis Inversiones</h3>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Empresa</th>
+        <th scope="col">cantidad invertida</th>
+        <th scope="col">Ganancia esperada</th>
+        <th scope="col">Fecha proyectada de cobro</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let invOp of userInvestmentOperations">
+        <th scope="row">{{ invOp.id }}</th>
+        <td>{{ invOp.investmentOffer.userOwner.business!.businessName }}</td>
+        <td>S/. {{ invOp.investedAmount }}</td>
+        <td class="text-themePrimary fw-500">+ S/. {{ invOp.expectedProfit }}</td>
+        <td>{{ invOp.investmentOffer.endDate }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

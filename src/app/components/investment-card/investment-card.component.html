@@ -7,6 +7,12 @@
     <p class="card-text">
       {{ investmentObj!.investmentDesc }}
     </p>
+    <p class="card-text text-themePrimary">
+      Tasa anual: <span class="fw-500">{{ (investmentObj!.annualizedRate * 100).toFixed(2) }}%</span> 
+    </p>
+    <p class="card-text text-themePrimary">
+      <span class="fw-500">{{ financingPercentage }}%</span> financiado
+    </p>
     <a (click)="goToInvestmentDetail(investmentObj!.id)" class="btn text-white bg-themePrimary hover-darker">Ver oportunidad</a>
   </div>
   <ul class="list-group list-group-flush">

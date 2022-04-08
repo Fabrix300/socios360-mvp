@@ -14,13 +14,25 @@ export class InvestmentCardComponent implements OnInit {
   @HostBinding('class.mb-3') shouldAddClassMb3: boolean = true;
   @Input() investmentObj?: InvestmentOffer;
 
+  financingPercentage: number = 0.00;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.calculateFinancingPercentage();
   }
 
   goToInvestmentDetail(investmentId: number): void {
     this.router.navigate(['/main/investments', investmentId]);
+  }
+
+  calculateFinancingPercentage(): void {
+    if(this.investmentObj) {
+      const total: number = this.investmentObj?.financingTarget;
+      const current: number = this.investmentObj?.currentFinancing;
+      const result: number = (current/total);
+      this.financingPercentage = parseFloat((result * 100).toFixed(2));
+    }
   }
 
 }

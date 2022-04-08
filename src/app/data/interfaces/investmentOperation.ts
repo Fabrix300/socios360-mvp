@@ -1,12 +1,12 @@
 import { Business } from "./business"
 import { InvestmentOffer } from "./investmentOffer"
 import { InvestmentType } from "./investmentType"
+import { User } from "./user"
 
 export interface InvestmentOperation {
     id: number
-    business: Business,
+    user: User,
     investmentOffer: InvestmentOffer,
-    investmentType: InvestmentType,
     investedAmount: number,
     expectedProfit: number,
     operationDate: string

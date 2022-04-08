@@ -27,6 +27,7 @@ import { ToastComponent } from './components/toast/toast.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { RechargeBalanceComponent } from './components/recharge-balance/recharge-balance.component';
 import { InvestInProposalComponent } from './components/invest-in-proposal/invest-in-proposal.component';
+import { MyInvestmentsComponent } from './my-investments/my-investments.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { InvestInProposalComponent } from './components/invest-in-proposal/inves
     ToastComponent,
     AlertComponent,
     RechargeBalanceComponent,
-    InvestInProposalComponent
+    InvestInProposalComponent,
+    MyInvestmentsComponent
   ],
   imports: [
     BrowserModule,

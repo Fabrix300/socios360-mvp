@@ -1,1 +1,2 @@
-trabajar la función de validación y q se guarde el objeto investmentoperation
+- trabajar la función de validación y q se guarde el objeto investmentoperation (DONE)
+- trabajar en la pantalla inicio

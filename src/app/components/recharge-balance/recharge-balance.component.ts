@@ -16,7 +16,9 @@ export class RechargeBalanceComponent implements OnInit {
     cardHolderName: '',
     cardNumber: '',
     dueDate: '',
-    cvc: ''
+    cvc: '',
+    operationDate: '',
+    user: this.loggedUser
   };
   step: number = 1;
 
@@ -81,7 +83,9 @@ export class RechargeBalanceComponent implements OnInit {
       cardHolderName: '',
       cardNumber: '',
       dueDate: '',
-      cvc: ''
+      cvc: '',
+      operationDate: '',
+      user: this.loggedUser
     };
     this.step = 1;
     const progressBar: HTMLElement = document.getElementById('rechargeBalanceProgressBar')!; /* Progress Bar */

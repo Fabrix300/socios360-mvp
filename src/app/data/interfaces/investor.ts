@@ -8,5 +8,4 @@ export interface Investor {
     docType: string,
     docNumber?: string
     money: number,
-    investmentOperations: InvestmentOperation[]
 }

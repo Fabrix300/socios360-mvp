@@ -10,12 +10,13 @@ export let userLastId: number = 5;
 export let investorLastId: number = 1;
 export let businessLastId: number = 4;
 export let investmentOfferLastId: number = 4;
+export let investmentOperationLastId: number = 0;
 export let highestFinancingTarget: number[] = [1, 100000];
 
 export var INVESTORS: Investor[] = [
     {
         id: 1, names: 'Fabricio', surnames: 'Sotelo Parra', dob: '2000-04-25', docType: 'DNI',
-        docNumber: '70778330', money: 0.00, investmentOperations: []
+        docNumber: '70778330', money: 0.00
     }
 ];
 export var BUSINESSES: Business[] = [
@@ -163,15 +164,13 @@ export var INVESTMENTOFFERS: InvestmentOffer[] = [
         investmentEnvironmentalCommitments: '',
         investmentType: INVESTMENTTYPES[0],
         //currencyType: CURRENCYTYPES[0],
-        financingTarget: 1520.00, currentFinancing: 1500.00, annualizedRate: 0.1095,
+        financingTarget: 1520.00, currentFinancing: 0.00, annualizedRate: 0.1095,
         endDate: '2022-08-15', created: '2022-04-01', updated: '2022-03-21',
         userOwner : USERS[4], imageURL: '../assets/img/businesses/lavado-carro.jpg',
         backers: []
     }
 ];
-export var INVESTMENTOPERATIONS: InvestmentOperation[] = [
-
-];
+export var INVESTMENTOPERATIONS: InvestmentOperation[] = [];
 
 // UserLastId
 export function addToUserLastId(newValue: number) {userLastId += newValue;}
@@ -185,6 +184,12 @@ export function getInvestorLastId(): number{return investorLastId;}
 export function addToBusinessLastId(newValue: number) {businessLastId += newValue;}
 export function setBusinessLastId(newValue: number) {businessLastId = newValue;}
 export function getBusinessLastId(): number{return businessLastId;}
+// InvestmentOfferLastId
+export function setInvestmentOfferLastId(newValue: number) {investmentOfferLastId = newValue;}
+export function getInvestmentOfferLastId(): number {return investmentOfferLastId;}
+// InvestmentOperationLastId
+export function setInvestmentOperationLastId(newValue: number) {investmentOperationLastId = newValue;}
+export function getInvestmentOperationLastId(): number {return investmentOperationLastId;}
 // highestFinancingTarget
 export function sethighestFinancingTarget(newValue: number[]) {highestFinancingTarget = newValue;}
 export function gethighestFinancingTarget(): number[] {return highestFinancingTarget;}

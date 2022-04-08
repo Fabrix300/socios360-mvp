@@ -87,6 +87,8 @@ export class InvestmentDetailComponent implements OnInit {
       return;
     } else if (result >= 0.99) {
       financingIndicator!.style.borderRadius = '5px 5px 5px 5px';
+    } else if (result <= 0.011) {
+      financingIndicator!.style.width = '1.05%';
     }
     financingIndicator!.style.width = (result*100)+'%';
     financingPercentage!.firstElementChild!.innerHTML = ((result * 100).toFixed(2)).toString() + "%";

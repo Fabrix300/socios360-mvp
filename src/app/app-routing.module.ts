@@ -10,6 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { InvestmentDetailComponent } from './investment-detail/investment-detail.component';
 import { BusinessComponent } from './business/business.component';
 import { BusinessHomeComponent } from './business-home/business-home.component';
+import { MyInvestmentsComponent } from './my-investments/my-investments.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -22,7 +23,8 @@ const routes: Routes = [
     children: [
       { path: 'home', component: HomeComponent },
       { path: 'investments', component: InvestmentsComponent },
-      { path: 'investments/:investmentId', component: InvestmentDetailComponent }
+      { path: 'investments/:investmentId', component: InvestmentDetailComponent },
+      { path: 'my-investments', component: MyInvestmentsComponent }
     ]
   },
   { path: 'business', redirectTo: 'business/home', pathMatch: 'full' },
