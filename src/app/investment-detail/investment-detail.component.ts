@@ -28,6 +28,7 @@ export class InvestmentDetailComponent implements OnInit {
     this.changeTitle();
     //this.getLoggedUser();
     this.getInvestmentByRouteId();
+    this.scrollToTop();
     this.setWindowScrollEventListener(this.i);
   }
 
@@ -76,6 +77,10 @@ export class InvestmentDetailComponent implements OnInit {
     }
   }
 
+  scrollToTop(): void {
+    window.scrollTo(0, 0);
+  }
+
   calculateCurrentFinancing(investmentOffer: InvestmentOffer): void {
     const financingIndicator = document.getElementById('financingIndicator');
     const financingPercentage = document.getElementById('financingPercentage');
@@ -98,9 +103,12 @@ export class InvestmentDetailComponent implements OnInit {
     return list.length;
   }
 
-  formatDate(date: string): string {
-    const dobArr = new Date(date).toDateString().split(' ');
-    return dobArr[2] + ' ' + dobArr[1] + ' ' + dobArr[3];
+  formatDateString(date: string): string {
+    //arreglar
+    /*const dobArr = new Date(date).toLocaleDateString().split('/');
+    return dobArr[0] + '-' + dobArr[1] + ' ' + dobArr[2];*/
+    const dateArr: string[] = date.split('-');
+    return dateArr[2]+'-'+dateArr[1]+'-'+dateArr[0];
   }
 
   showInvestInProposalModal(): void {

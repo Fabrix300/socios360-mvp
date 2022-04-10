@@ -28,6 +28,7 @@ import { AlertComponent } from './components/alert/alert.component';
 import { RechargeBalanceComponent } from './components/recharge-balance/recharge-balance.component';
 import { InvestInProposalComponent } from './components/invest-in-proposal/invest-in-proposal.component';
 import { MyInvestmentsComponent } from './my-investments/my-investments.component';
+import { MyTransactionsComponent } from './my-transactions/my-transactions.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { MyInvestmentsComponent } from './my-investments/my-investments.componen
     AlertComponent,
     RechargeBalanceComponent,
     InvestInProposalComponent,
-    MyInvestmentsComponent
+    MyInvestmentsComponent,
+    MyTransactionsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,53 @@
+<div class="row mb-3">
+  <div class="col">
+    <h3>Mis Transacciones</h3>
+  </div>
+</div>
+
+<div *ngIf="userTransactionOperations.length == 0">
+  <div class="row">
+    <div class="col text-center">
+      <span class="fs-40 text-themePrimary"><i class='bx bx-sad' ></i></span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <p>Aún no has realizado ninguna transacción.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <p>Tus recargas de saldo, pagos de inversiones o retiros de tu cuenta se verán aquí.</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="userTransactionOperations.length >= 1" class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Tipo de transacción</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Fecha de la transacción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transOp of userTransactionOperations">
+        <th scope="row">{{ transOp.id }}</th>
+        <td>
+          {{ formatTransactionType(transOp.transactionType) }}
+          <i *ngIf="transOp.transactionType == 0 || transOp.transactionType == 1" class='bx bx-arrow-to-right fw-800' style="color: green; position: relative; top: 0.1rem;"></i>
+          <i *ngIf="transOp.transactionType == 2" class='bx bx-arrow-from-left fw-800' style="color: red; position: relative; top: 0.1rem;"></i>
+        </td>
+        <td class="text-themePrimary fw-500">
+          <span class="fw-500" *ngIf="transOp.transactionType == 0 || transOp.transactionType == 1">+ </span>
+          <span class="fw-500" *ngIf="transOp.transactionType == 2">- </span>
+          S/. {{ transOp.amount }}
+        </td>
+        <td>{{ formatDateString(transOp.operationDate) }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

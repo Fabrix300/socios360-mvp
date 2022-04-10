@@ -36,7 +36,7 @@
               <div class="col-6">
                 <div class="input-group">
                   <span class="input-group-text" id="currencyIndicator">S/.</span>
-                  <input type="number" name="rechargeAmount" id="rechargeAmount" class="form-control" [(ngModel)]="balanceRecharge.amount" aria-describedby="currencyIndicator">
+                  <input (keyup)="validateRechargeAmount()" type="number" name="rechargeAmount" id="rechargeAmount" class="form-control" [(ngModel)]="balanceRecharge.amount" aria-describedby="currencyIndicator">
                 </div>
               </div>
             </div>
@@ -57,7 +57,7 @@
             <div class="row mt-1">
               <div class="col-12">
                 <label for="cardHolderName" class="form-label">Nombre del titular de la tarjeta:</label>
-                <input type="text" class="form-control" id="cardHolderName" placeholder="Nombre completo">
+                <input (keyup)="validateCardFields(cardHolderName.id)" [(ngModel)]="debitCreditCard.cardHolderName" #cardHolderName type="text" class="form-control" id="cardHolderName" placeholder="Nombre completo">
               </div>
             </div>
             <div class="row mt-3">
@@ -71,17 +71,17 @@
                     <img class="ms-1" src="../assets\img/credit-cards/American-Express-icon.png" width="20" alt="american express">
                   </span>
                 </div>
-                <input type="number" inputmode="numeric" class="form-control" id="cardNumber" placeholder="xxxx xxxx xxxx xxxx">
+                <input (keyup)="validateCardFields(cardNumber.id)" [(ngModel)]="debitCreditCard.cardNumber" #cardNumber type="text" class="form-control" id="cardNumber" placeholder="xxxx xxxx xxxx xxxx">
               </div>
             </div>
             <div class="row mt-3">
               <div class="col-sm-6">
-                <label for="cardNumber" class="form-label">Fecha de expiración:</label>
-                <input type="number" inputmode="numeric" class="form-control" id="cardNumber" placeholder="MM / AA">
+                <label for="dueDate" class="form-label">Fecha de expiración:</label>
+                <input (keyup)="validateCardFields(dueDate.id)" [(ngModel)]="debitCreditCard.dueDate" #dueDate type="text" class="form-control" id="dueDate" placeholder="MM/AA">
               </div>
               <div class="col-sm-6">
-                <label for="cardNumber" class="form-label">Código de seguridad:</label>
-                <input type="number" inputmode="numeric" class="form-control" id="cardNumber" placeholder="CVC">
+                <label for="cvc" class="form-label">Código de seguridad:</label>
+                <input (keyup)="validateCardFields(cvc.id)" [(ngModel)]="debitCreditCard.cvc" #cvc type="text" inputmode="numeric" class="form-control" id="cvc" placeholder="CVC">
               </div>
             </div>
           </div>

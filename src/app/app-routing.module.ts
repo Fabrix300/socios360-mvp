@@ -11,6 +11,7 @@ import { InvestmentDetailComponent } from './investment-detail/investment-detail
 import { BusinessComponent } from './business/business.component';
 import { BusinessHomeComponent } from './business-home/business-home.component';
 import { MyInvestmentsComponent } from './my-investments/my-investments.component';
+import { MyTransactionsComponent } from './my-transactions/my-transactions.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -24,7 +25,8 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'investments', component: InvestmentsComponent },
       { path: 'investments/:investmentId', component: InvestmentDetailComponent },
-      { path: 'my-investments', component: MyInvestmentsComponent }
+      { path: 'my-investments', component: MyInvestmentsComponent },
+      { path: 'my-transactions', component: MyTransactionsComponent }
     ]
   },
   { path: 'business', redirectTo: 'business/home', pathMatch: 'full' },

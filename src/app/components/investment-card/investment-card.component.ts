@@ -35,4 +35,9 @@ export class InvestmentCardComponent implements OnInit {
     }
   }
 
+  formatDateString(date: string): string {
+    const dateArr: string[] = date.split('-');
+    return dateArr[2]+'-'+dateArr[1]+'-'+dateArr[0];
+  }
+
 }

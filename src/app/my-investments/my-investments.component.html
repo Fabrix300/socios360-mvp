@@ -3,13 +3,27 @@
     <h3>Mis Inversiones</h3>
   </div>
 </div>
-<div class="table-responsive">
+
+<div *ngIf="userInvestmentOperations.length == 0">
+  <div class="row">
+    <div class="col text-center">
+      <span class="fs-40 text-themePrimary"><i class='bx bx-sad' ></i></span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <p>Aún no has realizado ninguna inversión. Si quieres invertir, revisa nuestras <a class="cursor-pointer text-themePrimary" [routerLink]="['/main', 'investments']">oportunidades de inversión</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="userInvestmentOperations.length >= 1" class="table-responsive">
   <table class="table">
     <thead>
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Empresa</th>
-        <th scope="col">cantidad invertida</th>
+        <th scope="col">Cantidad invertida</th>
         <th scope="col">Ganancia esperada</th>
         <th scope="col">Fecha proyectada de cobro</th>
       </tr>
@@ -20,7 +34,7 @@
         <td>{{ invOp.investmentOffer.userOwner.business!.businessName }}</td>
         <td>S/. {{ invOp.investedAmount }}</td>
         <td class="text-themePrimary fw-500">+ S/. {{ invOp.expectedProfit }}</td>
-        <td>{{ invOp.investmentOffer.endDate }}</td>
+        <td>{{ formatDateString(invOp.investmentOffer.endDate) }}</td>
       </tr>
     </tbody>
   </table>

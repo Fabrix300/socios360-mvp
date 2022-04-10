@@ -35,6 +35,7 @@ export class InvestInProposalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
   }
 
   // traer la oferta de inversión
@@ -56,10 +57,21 @@ export class InvestInProposalComponent implements OnInit {
   setDailyRateAndDates(annualizedRate: number): void {
     this.monthlyRate = Math.pow((1+annualizedRate), (1/12)) - 1;
     this.dailyRate = Math.pow((1+this.monthlyRate), (1/30)) - 1;
-    const endDate: Date = new Date(this.investmentOffer.endDate);
-    const nowDate: Date = new Date();
+    const endDate: Date = this.convertDateStringToDateObj(this.investmentOffer.endDate);
+    const nowDate: Date = this.getNowDateReseted();
     const differenceInTime = endDate.getTime() - nowDate.getTime();
-    this.differenceInDays = Math.round(differenceInTime / (1000 * 3600 * 24));
+    this.differenceInDays = Math.ceil(differenceInTime / (1000 * 3600 * 24));
+    console.log('diferencia de dias con el método original: ' + this.differenceInDays);
+  }
+
+  convertDateStringToDateObj(date: string): Date {
+    const dateArr: string[] = date.split('-');
+    return new Date(parseInt(dateArr[0]), parseInt(dateArr[1])-1, parseInt(dateArr[2]));
+  }
+
+  getNowDateReseted(): Date {
+    const nowDateArr: string[] = new Date().toLocaleDateString().split('/');
+    return new Date(parseInt(nowDateArr[2]), parseInt(nowDateArr[1])-1, parseInt(nowDateArr[0]));
   }
 
   getUserById(): void {
@@ -89,7 +101,7 @@ export class InvestInProposalComponent implements OnInit {
       investedAmountParent!.nextElementSibling!.innerHTML = 'El monto debe ser mayor a 0';
       investedAmountParent!.parentElement!.classList.add('error');
     }
-    const expectedProfit: number = (this.investmentOperation.investedAmount * Math.pow((1 + this.dailyRate), this.differenceInDays)) - this.investmentOperation.investedAmount
+    const expectedProfit: number = (this.investmentOperation.investedAmount * Math.pow((1 + this.dailyRate), this.differenceInDays)) - this.investmentOperation.investedAmount;
     this.investmentOperation.expectedProfit = parseFloat(expectedProfit.toFixed(4));
   }
 

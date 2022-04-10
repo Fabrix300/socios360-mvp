@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import { CURRENCYTYPES, INVESTMENTOFFERS, INVESTMENTTYPES, gethighestFinancingTarget } from '../data/database';
+import { INVESTMENTOFFERS, INVESTMENTTYPES, gethighestFinancingTarget } from '../data/database';
 import { CurrencyType } from '../data/interfaces/currencyType';
 import { InvestmentFilters } from '../data/interfaces/investmentFilters';
 import { InvestmentOffer } from '../data/interfaces/investmentOffer';
@@ -25,10 +25,10 @@ export class InvestmentsService {
     return of(investmentTypes);
   }
 
-  getAllCurrencyTypes(): Observable<CurrencyType[]> {
+  /*getAllCurrencyTypes(): Observable<CurrencyType[]> {
     const currencyTypes = CURRENCYTYPES;
     return of(currencyTypes);
-  }
+  }*/
 
   getHighestFinancingTarget(): Observable<number> {
     return of(gethighestFinancingTarget()[1]);

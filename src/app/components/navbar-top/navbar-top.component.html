@@ -16,14 +16,14 @@
           <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['/main', 'investments']">Inversiones</a>
         </li>
       </ul>
-      <form *ngIf="userJSON.accType == 1" class="d-flex pe-3">
+      <!--<form *ngIf="userJSON.accType == 1" class="d-flex pe-3">
         <div class="input-group">
           <input type="text" class="form-control buscador" placeholder="Buscar" aria-label="Recipient's username" aria-describedby="search-btn">
           <button class="btn btn-secondary" type="button" id="search-btn">
             <i class='bx bx-search'></i>
           </button>
         </div>
-      </form>
+      </form>-->
       <ul class="navbar-nav" [class.ms-auto]="userJSON.accType == 2">
         <li class="nav-item dropdown navbarLiDropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -52,7 +52,7 @@
               </a>
             </li>
             <li>
-              <a class="dropdown-item cursor-pointer">
+              <a class="dropdown-item cursor-pointer" [routerLink]="['/main', 'my-transactions']">
                 <span><i class='bx bxs-bank'></i></span>
                 <span class="dropdown-option"> Mis transacciones</span>
               </a>
