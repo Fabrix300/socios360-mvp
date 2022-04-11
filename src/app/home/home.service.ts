@@ -26,4 +26,20 @@ export class HomeService {
     return of(newInvestments);
   }
 
+  getMostFundedInvestment(): Observable<InvestmentOffer | undefined> {
+    let maxFinancingPercentage: number = 0.00;
+    let indexOfMaxFinancingPercentageInvestment: number = 0;
+    if(INVESTMENTOFFERS.length > 0){
+      for(let i = 0; i < INVESTMENTOFFERS.length; i++){
+        const result: number = (INVESTMENTOFFERS[i].currentFinancing/INVESTMENTOFFERS[i].financingTarget);
+        if(result >= maxFinancingPercentage) {
+          maxFinancingPercentage = result;
+          indexOfMaxFinancingPercentageInvestment = i;
+        }
+      }
+      return of(INVESTMENTOFFERS[indexOfMaxFinancingPercentageInvestment]);
+    }
+    return of(undefined);
+  }
+
 }
