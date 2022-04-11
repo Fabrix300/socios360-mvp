@@ -1,2 +1,32 @@
 - trabajar la función de validación y q se guarde el objeto investmentoperation (DONE)
 - trabajar en la pantalla inicio
+
+https://css-tricks.com/can-get-pretty-far-making-slider-just-html-css/
+
+setDailyRateAndDates(annualizedRate: number): void {
+    this.monthlyRate = Math.pow((1+annualizedRate), (1/12)) - 1;
+    this.dailyRate = Math.pow((1+this.monthlyRate), (1/30)) - 1;
+    const endDate: Date = this.convertDateStringToDateObj(this.investmentOffer.endDate);
+    const nowDate: Date = this.getNowDateReseted();
+    console.log(endDate);
+    console.log(nowDate);
+    const differenceInTime = endDate.getTime() - nowDate.getTime();
+    this.differenceInDays = Math.ceil(differenceInTime / (1000 * 3600 * 24));
+    console.log('diferencia de dias con el método original: ' + this.differenceInDays);
+  }
+
+  convertDateStringToDateObj(date: string): Date {
+    const dateArr: string[] = date.split('-');
+    return new Date(parseInt(dateArr[0]), parseInt(dateArr[1])-1, parseInt(dateArr[2]));
+  }
+
+  getNowDateReseted(): Date {
+    /*const nowDateArr: string[] = new Date().toLocaleDateString().split('/');
+    console.log(nowDateArr);
+    return new Date(parseInt(nowDateArr[2]), parseInt(nowDateArr[1])-1, parseInt(nowDateArr[0]));*/
+    const nowDate: Date = new Date();
+    const month: number = nowDate.getUTCMonth() + 1; //months from 1-12
+    const day: number = nowDate.getUTCDate();
+    const year: number = nowDate.getUTCFullYear();
+    return new Date(year, month-1, day);
+  }

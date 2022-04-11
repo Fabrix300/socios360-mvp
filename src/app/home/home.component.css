@@ -1,0 +1,25 @@
+.slider {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+
+    scroll-snap-type: x mandatory;
+}
+.slide {
+    width: 300px;
+    flex-shrink: 0;
+    height: 100%;
+}
+.fs-0_9rem {
+    font-size: 0.9rem;
+}
+a.no-decorations:hover {
+    text-decoration: underline;
+}
+.hover-link:hover {
+    text-decoration: underline;
+    color: var(--color-themePrimary);
+}
