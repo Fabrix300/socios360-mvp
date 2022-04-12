@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
     this.homeService.getNewInvestments().subscribe(newInvOffers => {
       if(newInvOffers){
         this.newInvOffers = newInvOffers;
-        console.log(this.newInvOffers);
       } else {
         // error en traer las ultimas ofertas de inversión
       }
