@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
 
   newInvOffers: InvestmentOffer[] = [];
   mostFundedInvestment: InvestmentOffer = <InvestmentOffer>{};
+  popularFactoringInvestments: InvestmentOffer[] = [];
 
   constructor(private titleService: Title, private homeService: HomeService) { }
 
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
     this.changeTitle();
     this.getNewInvestments();
     this.getMostFundedInvestment();
+    this.getPopularFactoringInvestments();
   }
 
   changeTitle(): void {
@@ -44,6 +46,14 @@ export class HomeComponent implements OnInit {
     this.homeService.getMostFundedInvestment().subscribe(mostFundedInvestment => {
       if(mostFundedInvestment) {
         this.mostFundedInvestment = mostFundedInvestment;
+      }
+    });
+  }
+
+  getPopularFactoringInvestments(): void {
+    this.homeService.getPopularFactoringInvestments().subscribe(popFactInvs => {
+      if(popFactInvs){
+        this.popularFactoringInvestments = popFactInvs;
       }
     });
   }

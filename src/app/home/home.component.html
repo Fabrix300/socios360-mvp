@@ -8,11 +8,11 @@
   </div>
 </div>
 
-<hr class="my-4">
+<hr class="my-5">
 
-<div class="row mt-4">
+<div class="row mb-4">
   <div class="col">
-    <h2>Novedades del mes</h2>
+    <h4>Novedades del mes</h4>
   </div>
 </div>
 
@@ -24,8 +24,8 @@
   </div>
 </div>-->
 
-<div class="row mt-4" *ngIf="newInvOffers">
-  <div *ngFor="let newInvOffer of newInvOffers" class="col-md-4 mt-1">
+<div class="row" *ngIf="newInvOffers" style="margin-bottom: 5rem;">
+  <div *ngFor="let newInvOffer of newInvOffers" class="col-md-4">
     <!--<div>
       <img [src]="newInvOffer.imageURL" [alt]="newInvOffer.investmentName" class="rounded-top" style="width: 100%;">
       <div class="border rounded-bottom p-3">
@@ -34,7 +34,7 @@
         <div class="fs-0_9rem text-muted">Por <a href="" class="no-decorations text-muted cursor-pointer">{{newInvOffer.userOwner.business!.businessTradeName}}</a></div>
       </div>
     </div>-->
-    <div class="card w-100">
+    <div class="shadow card w-100">
       <img [src]="newInvOffer.imageURL" [alt]="newInvOffer.investmentName" class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">{{newInvOffer.investmentName}}</h5>
@@ -45,17 +45,17 @@
   </div>
 </div>
 
-<div class="row mt-4">
+<div class="row mb-4">
   <div class="col">
-    <h2>Oportunidad de inversión destacada</h2>
+    <h4>Oportunidad de inversión destacada</h4>
   </div>
 </div>
 
-<div class="row mt-4">
+<div class="row" style="margin-bottom: 5rem;">
   <div class="col-md-5">
     <img [src]="mostFundedInvestment.imageURL" [alt]="mostFundedInvestment.investmentName" class="w-100 rounded">
   </div>
-  <div class="col-md-7 d-flex flex-column justify-content-center">
+  <div class="col-md-7 ps-4 shadow rounded d-flex flex-column justify-content-center">
     <div class="row">
       <div class="col-12">
         <h3>{{mostFundedInvestment.investmentName}}</h3>
@@ -68,12 +68,36 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <p class="ext-themePrimary"><span class="fw-500">{{calculateFinancingPercentage(mostFundedInvestment.currentFinancing, mostFundedInvestment.financingTarget)}}% </span>financiado</p>
+        <p class="text-themePrimary">Tasa anual: <span class="fw-500">{{mostFundedInvestment.annualizedRate * 100}}%</span></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p class="text-themePrimary"><span class="fw-500">{{calculateFinancingPercentage(mostFundedInvestment.currentFinancing, mostFundedInvestment.financingTarget)}}% </span>financiado</p>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
         <p class="fs-0_9rem text-muted">Por <a href="" class="no-decorations text-muted cursor-pointer">{{mostFundedInvestment.userOwner.business!.businessTradeName}}</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col">
+    <h4>Popular en "Factoring"</h4>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom: 5rem;">
+  <div *ngFor="let popFactInv of popularFactoringInvestments" class="col-md-6">
+    <div class="shadow card w-100">
+      <img [src]="popFactInv.imageURL" [alt]="popFactInv.investmentName" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{popFactInv.investmentName}}</h5>
+        <p class="card-text text-themePrimary"><span class="fw-500">{{calculateFinancingPercentage(popFactInv.currentFinancing, popFactInv.financingTarget)}}% </span>financiado</p>
+        <p class="card-text fs-0_9rem text-muted">Por <a href="" class="no-decorations text-muted cursor-pointer">{{popFactInv.userOwner.business!.businessTradeName}}</a></p>
       </div>
     </div>
   </div>

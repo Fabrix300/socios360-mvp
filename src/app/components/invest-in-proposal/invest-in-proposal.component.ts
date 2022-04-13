@@ -59,6 +59,8 @@ export class InvestInProposalComponent implements OnInit {
     this.dailyRate = Math.pow((1+this.monthlyRate), (1/30)) - 1;
     const endDate: Date = this.convertDateStringToDateObj(this.investmentOffer.endDate);
     const nowDate: Date = this.getNowDateReseted();
+    console.log(endDate);
+    console.log(nowDate);
     const differenceInTime = endDate.getTime() - nowDate.getTime();
     this.differenceInDays = Math.ceil(differenceInTime / (1000 * 3600 * 24));
     console.log('diferencia de dias con el método original: ' + this.differenceInDays);
@@ -70,8 +72,14 @@ export class InvestInProposalComponent implements OnInit {
   }
 
   getNowDateReseted(): Date {
-    const nowDateArr: string[] = new Date().toLocaleDateString().split('/');
-    return new Date(parseInt(nowDateArr[2]), parseInt(nowDateArr[1])-1, parseInt(nowDateArr[0]));
+    /*const nowDateArr: string[] = new Date().toLocaleDateString().split('/');
+    console.log(nowDateArr);
+    return new Date(parseInt(nowDateArr[2]), parseInt(nowDateArr[1])-1, parseInt(nowDateArr[0]));*/
+    const nowDate: Date = new Date();
+    const month: number = nowDate.getMonth(); //months from 1-12
+    const day: number = nowDate.getDate();
+    const year: number = nowDate.getFullYear();
+    return new Date(year, month, day);
   }
 
   getUserById(): void {
@@ -87,7 +95,7 @@ export class InvestInProposalComponent implements OnInit {
   }
 
   calculateExpectedInputAndValidate(): void {
-    // Trabajar en la logica de validación del campo
+    // validación del campo
     const investedAmount = <HTMLInputElement>document.getElementById('investedAmount');
     const investedAmountParent = investedAmount.parentElement;
     investedAmountParent!.parentElement!.classList.remove('error');
